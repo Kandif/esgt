@@ -20,4 +20,17 @@ kind of transition:
 ```GDscript
   ESGT.set_transition("left_to-right")
 ```
+set default transiting by image:
+```GDscript
+  ESGT.set_image(preload("res://image.jpg"))
+```
+or set default color of transiting:
+```GDscript
+  ESGT.set_color(Color.BLUE)
+```
+
+You also can once time set tranition during change:
+```GDscript
+  ESGT.change_scene("res://Scene.tscc",2,"left-to-right")
+```
 
