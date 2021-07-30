@@ -53,7 +53,7 @@ func set_image(img):
 func set_transion_time(time):
 	time_transition = time
 
-func change_color(color=color_transition):
+func set_color(color=color_transition):
 	is_img=false
 	color_transition=color
 	rect.color=color_transition
@@ -179,7 +179,8 @@ func rect_re():
 	rect.show()
 	
 func rect_hide():
-	rect.hide()	
+	rect.hide()
+	
 		
 func change(object,key):
 	if change_scene:
