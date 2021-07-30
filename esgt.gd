@@ -12,6 +12,8 @@ var transition_kinds = ["fade","left-to-right","right-to-left","up-to-down","dow
 var color_transition = Color.black
 var transtion_to = Color(0,0,0,0)
 
+var one_time_transition = ""
+
 var is_img=false
 
 
@@ -86,13 +88,21 @@ func _ready():
 	
 	
 func create():
-	transition_in(time_transition,transition_kind)
-	
+	if one_time_transition!="":
+		transition_in(time_transition,one_time_transition)
+		one_time_transition=""
+	else:
+		transition_in(time_transition,transition_kind)
+		
 func exit_scene(node):
 	if node == get_tree().get_current_scene():
 		create()
 	
 func change_scene(scene,duration=time_transition,kind=transition_kind):
+	if !transition_kinds.has(kind):
+		kind=transition_kind
+	if kind!=transition_kind:
+		one_time_transition = kind
 	change_scene=true
 	scene_path = scene
 	transition_out(duration,kind)
@@ -169,7 +179,7 @@ func rect_re():
 	rect.show()
 	
 func rect_hide():
-	rect.hide()
+	rect.hide()	
 		
 func change(object,key):
 	if change_scene:
